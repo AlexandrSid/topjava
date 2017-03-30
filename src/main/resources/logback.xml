@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanperiod="30 seconds">
+
+    <contextListner class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListner>
+
+    <!--to enable JMX management-->
+    <jmxConfigurator/>
+
+        <appender name="file" class="ch.qos.logback.core.FileAppender">
+            <file>${TOPJAVA_ROOT}/log/topjava.log</file>
+
+            <encoder>
+                <charset>UTF-8</charset>
+                <pattern>%date %-5level %logger{0} [%file:%line] %msg%n</pattern>
+            </encoder>
+        </appender>
+
+        <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <charset>UTF-8</charset>
+                <pattern>%-5level %logger{0} [%file:%line] %msg%n</pattern>
+            </encoder>
+        </appender>
+
+        <logger name="ru.javawebinar.topjava" level="debug"/>
+
+        <root level="info">
+            <appender-ref ref="file"/>
+            <appender-ref ref="console"/>
+        </root>
+
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
