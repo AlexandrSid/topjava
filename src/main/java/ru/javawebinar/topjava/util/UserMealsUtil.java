@@ -31,6 +31,10 @@ public class UserMealsUtil {
     public static void main(String[] args) {
         List<UserMealWithExceed> filteredMealsWithExceeded = getFilteredWithExceeded(MEAL_LIST, LocalTime.of(7, 0), LocalTime.of(12, 0), 2000);
         filteredMealsWithExceeded.forEach(System.out::println);
+        System.out.println("-----------------------------");
+        System.out.println("-----------------------------");
+        getWithExceeded(MEAL_LIST, DEFAULT_CALORIES_PER_DAY).forEach(System.out::println);
+
 //        .toLocalDate();
 //        .toLocalTime();
     }
