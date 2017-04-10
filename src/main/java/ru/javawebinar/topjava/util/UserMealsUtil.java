@@ -55,7 +55,7 @@ public class UserMealsUtil {
     }
 
     public static UserMealWithExceed createWithExceeded(UserMeal um, boolean exceeded){
-        return new UserMealWithExceed(um.getDateTime(), um.getDescription(), um.getCalories(), exceeded);
+        return new UserMealWithExceed(um.getId(), um.getDateTime(), um.getDescription(), um.getCalories(), exceeded);
     }
 
 }
