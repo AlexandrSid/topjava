@@ -12,6 +12,7 @@
     <url>http://topjava.herokuapp.com/</url>
 
     <properties>
+        <!--JavaLanguageAndCode-->
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -19,6 +20,10 @@
         <!-- Logging -->
         <logback.version>1.1.6</logback.version>
         <slf4j.version>1.7.18</slf4j.version>
+
+        <!--Spring-->
+        <spring.version>4.2.5.RELEASE</spring.version>
+
     </properties>
 
     <build>
@@ -81,6 +86,19 @@
             <scope>provided</scope>
         </dependency>
 
+        <!--Spring dependency-->
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
     </dependencies>
 

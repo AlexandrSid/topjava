@@ -1,5 +1,6 @@
 package ru.javawebinar.topjava.web.user;
 
+import org.springframework.stereotype.Controller;
 import ru.javawebinar.topjava.model.User;
 
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.List;
 /**
  * Created by Александр on 2017-04-13.
  */
+@Controller
 public class AdminRestController extends AbstractUserController {
 
     @Override
