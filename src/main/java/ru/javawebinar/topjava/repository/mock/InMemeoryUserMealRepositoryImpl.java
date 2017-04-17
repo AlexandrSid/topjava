@@ -22,6 +22,8 @@ import static ru.javawebinar.topjava.repository.mock.InMemoryUserRepositoryImpl.
  */
 @Repository
 public class InMemeoryUserMealRepositoryImpl implements UserMealRepository {
+    //sorting by time. last records upwards
+    public  static final Comparator<UserMeal> USER_MEAL_COMPARATOR = Comparator.comparing(UserMeal::getDateTime).reversed();
 
     private Map<Integer, Map<Integer, UserMeal>> repository = new ConcurrentHashMap<>();
     private AtomicInteger counter = new AtomicInteger(0);
@@ -33,9 +35,6 @@ public class InMemeoryUserMealRepositoryImpl implements UserMealRepository {
         save(new UserMeal(11, LocalDateTime.now(), "Admin's dinner", 1100), ADMIN_ID);
     }
 
-
-    //sorting by time. last records upwards
-    private static final Comparator<UserMeal> USER_MEAL_COMPARATOR = Comparator.comparing(UserMeal::getDateTime).reversed();
 
     @Override
     public UserMeal save(UserMeal userMeal, int userId) {
@@ -66,7 +65,7 @@ public class InMemeoryUserMealRepositoryImpl implements UserMealRepository {
     @Override
     public Collection<UserMeal> getAll(int userId) {
         Map<Integer, UserMeal> userMeals = repository.get(userId);
-        if(userMeals == null){
+        if (userMeals == null) {
             userMeals = new ConcurrentHashMap<>();
             return userMeals.values();
         }
@@ -76,7 +75,7 @@ public class InMemeoryUserMealRepositoryImpl implements UserMealRepository {
     @Override
     public Collection<UserMeal> getBetween(LocalDateTime startTime, LocalDateTime endTime, int userId) {
         Map<Integer, UserMeal> userMeals = repository.get(userId);
-        if(userMeals == null){
+        if (userMeals == null) {
             userMeals = new ConcurrentHashMap<>();
             return userMeals.values();
         }

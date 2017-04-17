@@ -15,9 +15,7 @@ import java.util.Collection;
  */
 @Service
 public class UserMealServiceImpl implements UserMealService {
-    public void setRepository(UserMealRepository repository) {
-        this.repository = repository;
-    }
+
 
     @Autowired
     private UserMealRepository repository;
@@ -29,7 +27,7 @@ public class UserMealServiceImpl implements UserMealService {
     }
 
     @Override
-    public void delete(int id, int userId) throws NotFoundException {
+    public void delete(int id, int userId)  {
         ExceptionUtil.check(repository.delete(id, userId), id);
     }
 

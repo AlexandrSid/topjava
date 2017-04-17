@@ -13,11 +13,9 @@ import java.util.Collection;
  */
 public interface UserMealService {
 
-
     UserMeal get(int id, int userId) throws NotFoundException;
 
     void delete(int id, int userId) throws NotFoundException;
-
 
     default Collection<UserMeal> getBetweenDates(LocalDate startDate, LocalDate endDate, int userId) {
         return getBetweenDateTime(LocalDateTime.of(startDate, LocalTime.MIN), LocalDateTime.of(endDate, LocalTime.MAX), userId);

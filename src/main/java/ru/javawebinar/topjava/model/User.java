@@ -34,9 +34,13 @@ public class User extends NamedEntity {
         super(id, name);
         this.email = email;
         this.password = password;
+        this.caloriesPerDay = caloriesPerDay;
         this.enabled = enabled;
         this.roles = roles;
-        this.caloriesPerDay = caloriesPerDay;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
@@ -47,12 +51,20 @@ public class User extends NamedEntity {
         this.password = password;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+    public Date getRegistered() {
+        return registered;
     }
 
     public void setRegistered(Date registered) {
         this.registered = registered;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public int getCaloriesPerDay() {
+        return caloriesPerDay;
     }
 
     public void setRoles(Set<Role> roles) {
@@ -63,28 +75,16 @@ public class User extends NamedEntity {
         this.caloriesPerDay = caloriesPerDay;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
     public boolean isEnabled() {
         return enabled;
-    }
-
-    public Date getRegistered() {
-        return registered;
     }
 
     public Set<Role> getRoles() {
         return roles;
     }
 
-    public int getCaloriesPerDay() {
-        return caloriesPerDay;
+    public String getPassword() {
+        return password;
     }
 
     @Override
