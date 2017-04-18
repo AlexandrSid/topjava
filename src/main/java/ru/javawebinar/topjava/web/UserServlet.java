@@ -1,6 +1,7 @@
 package ru.javawebinar.topjava.web;
 
 import org.slf4j.Logger;
+import ru.javawebinar.topjava.LoggedUser;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,4 +23,10 @@ public class UserServlet extends HttpServlet {
 //        resp.sendRedirect("userList.jsp");
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       int userId = Integer.valueOf(req.getParameter("userId"));
+        LoggedUser.setId(userId);
+        resp.sendRedirect("meals");
+    }
 }

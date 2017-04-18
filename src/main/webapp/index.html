@@ -7,9 +7,16 @@
 <body>
 <h2>Приложение вебинара "<a href="http://javawebinar.ru/topjava/" target="_blank">Top Java."</a></h2>
 <hr>
-<h3>
-    <a href="users">Users</a>
-    <a href="meals">Meals</a>
-</h3>
+<form method="post" action="users">
+    Login as <select name="userId">
+    <option value="1" selected>User</option>
+    <option value="2">Admin</option>
+</select>
+    <button type="submit">Choose</button>
+</form>
+<ul>
+   <li><a href="users">Users</a></li>
+    <li><a href="meals">Meals</a></li>
+</ul>
 </body>
 </html>
