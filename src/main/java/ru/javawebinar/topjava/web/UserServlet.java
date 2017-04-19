@@ -16,17 +16,16 @@ import static org.slf4j.LoggerFactory.getLogger;
  */
 public class UserServlet extends HttpServlet {
     private static final Logger LOG = getLogger(UserServlet.class);
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LOG.debug("redirrect to userList");
-        req.getRequestDispatcher("/userList.jsp").forward(req,resp);
-//        resp.sendRedirect("userList.jsp");
-    }
 
-    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       int userId = Integer.valueOf(req.getParameter("userId"));
+        int userId = Integer.valueOf(req.getParameter("userId"));
         LoggedUser.setId(userId);
         resp.sendRedirect("meals");
+    }
+
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        LOG.debug("redirrect to userList");
+        req.getRequestDispatcher("/userList.jsp").forward(req, resp);
+//        resp.sendRedirect("userList.jsp");
     }
 }

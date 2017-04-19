@@ -31,8 +31,8 @@ public class InMemeoryUserMealRepositoryImpl implements UserMealRepository {
     {
         UserMealsUtil.MEAL_LIST.forEach(um -> save(um, USER_ID));
 
-        save(new UserMeal(10, LocalDateTime.now(), "Admin's lunch", 1000), ADMIN_ID);
-        save(new UserMeal(11, LocalDateTime.now(), "Admin's dinner", 1100), ADMIN_ID);
+        save(new UserMeal(null, LocalDateTime.now(), "Admin's lunch", 1000), ADMIN_ID);
+        save(new UserMeal(null, LocalDateTime.now(), "Admin's dinner", 1100), ADMIN_ID);
     }
 
 

@@ -25,7 +25,7 @@ import java.util.Objects;
  */
 
 public class MealServlet extends HttpServlet {
-    private static final Logger LOG = LoggerFactory.getLogger(UserServlet.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MealServlet.class);
 
 //    private UserMealRepository repository;
 
@@ -48,7 +48,7 @@ public class MealServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String action = request.getParameter("action");
         if (action == null) {
@@ -56,6 +56,7 @@ public class MealServlet extends HttpServlet {
                     LocalDateTime.parse(request.getParameter("dateTime")),
                     request.getParameter("description"),
                     Integer.valueOf(request.getParameter("calories")));
+
             if (request.getParameter("id").isEmpty()) {
                 LOG.info("Create {}", userMeal);
                 mealController.create(userMeal);
@@ -64,8 +65,8 @@ public class MealServlet extends HttpServlet {
                 mealController.update(userMeal, getId(request));
             }
             response.sendRedirect("meals");
-        }
-        else if(action.equals("filter")){
+
+        } else if (action.equals("filter")) {
             LocalDate startDate = TimeUtil.parseLocalDate(resetParam("startDate", request));
             LocalDate endDate = TimeUtil.parseLocalDate(resetParam("endDate", request));
             LocalTime startTime = TimeUtil.parseLocalTime(resetParam("startTime", request));
@@ -81,7 +82,7 @@ public class MealServlet extends HttpServlet {
         if (action == null) {
             LOG.info("get all");
             request.setAttribute("mealList", mealController.getAll());
-            request.getRequestDispatcher("/mealList.jsp").forward(request, response);
+            request.getRequestDispatcher("mealList.jsp").forward(request, response);
         } else if (action.equals("delete")) {
             int id = getId(request);
             LOG.info("Delete {}", id);
@@ -94,17 +95,16 @@ public class MealServlet extends HttpServlet {
             request.setAttribute("meal", meal);
             request.getRequestDispatcher("mealEdit.jsp").forward(request, response);
         }
-
-    }
-
-    private int getId(HttpServletRequest request) {
-        String paramId = Objects.requireNonNull(request.getParameter("id"));
-        return Integer.valueOf(paramId);
     }
 
     private String resetParam(String param, HttpServletRequest request) {
         String value = request.getParameter(param);
         request.setAttribute(param, value);
         return value;
+    }
+
+    private int getId(HttpServletRequest request) {
+        String paramId = Objects.requireNonNull(request.getParameter("id"));
+        return Integer.valueOf(paramId);
     }
 }
