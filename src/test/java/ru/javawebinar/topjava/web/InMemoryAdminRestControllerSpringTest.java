@@ -25,11 +25,12 @@ import static ru.javawebinar.topjava.UserTestData.USER_ID;
 @ContextConfiguration("classpath:spring/spring-app.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class InMemoryAdminRestControllerSpringTest {
-    @Autowired
-    public static AdminRestController controller;
 
     @Autowired
-    public static UserRepository repository;
+    public  AdminRestController controller;
+
+    @Autowired
+    public  UserRepository repository;
 
     @Before
     public void setUp() {
