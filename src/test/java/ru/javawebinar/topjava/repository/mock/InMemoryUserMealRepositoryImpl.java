@@ -14,14 +14,11 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-import static ru.javawebinar.topjava.repository.mock.InMemoryUserRepositoryImpl.ADMIN_ID;
-import static ru.javawebinar.topjava.repository.mock.InMemoryUserRepositoryImpl.USER_ID;
-
 /**
  * Created by Александр on 2017-04-07.
  */
 @Repository
-public class InMemeoryUserMealRepositoryImpl implements UserMealRepository {
+public class InMemoryUserMealRepositoryImpl implements UserMealRepository {
     //sorting by time. last records upwards
     public  static final Comparator<UserMeal> USER_MEAL_COMPARATOR = Comparator.comparing(UserMeal::getDateTime).reversed();
 
@@ -29,10 +26,10 @@ public class InMemeoryUserMealRepositoryImpl implements UserMealRepository {
     private AtomicInteger counter = new AtomicInteger(0);
 
     {
-        UserMealsUtil.MEAL_LIST.forEach(um -> save(um, USER_ID));
+        UserMealsUtil.MEAL_LIST.forEach(um -> save(um, InMemoryUserRepositoryImpl.USER_ID));
 
-        save(new UserMeal(null, LocalDateTime.now(), "Admin's lunch", 1000), ADMIN_ID);
-        save(new UserMeal(null, LocalDateTime.now(), "Admin's dinner", 1100), ADMIN_ID);
+        save(new UserMeal(null, LocalDateTime.now(), "Admin's lunch", 1000), InMemoryUserRepositoryImpl.ADMIN_ID);
+        save(new UserMeal(null, LocalDateTime.now(), "Admin's dinner", 1100), InMemoryUserRepositoryImpl.ADMIN_ID);
     }
 
 

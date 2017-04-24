@@ -24,6 +24,9 @@
         <!--Spring-->
         <spring.version>4.2.5.RELEASE</spring.version>
 
+        <!--Test-->
+        <junit.version>4.12</junit.version>
+
     </properties>
 
     <build>
@@ -98,6 +101,13 @@
                     <artifactId>commons-logging</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <!--JUnit-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
         </dependency>
 
     </dependencies>

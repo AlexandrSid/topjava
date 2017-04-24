@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.repository.UserRepository;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -28,12 +30,21 @@ public class InMemoryUserRepositoryImpl implements UserRepository {
     public static final int USER_ID = 1;
     public static final int ADMIN_ID = 2;
 
+    @PostConstruct
+    public static void postCunstruct() {
+        LOG.info("+++PostConstruct");
+    }
+
+    @PreDestroy
+    public static void preDestroy(){
+        LOG.info("+++PreDestroy");
+    }
 
     @Override
     public User save(User user) {
-        LOG.info("inMemory safe " + user);
+        LOG.info("mock safe " + user);
 //        Objects.requireNonNull(user);
-        if (user.isNew()){
+        if (user.isNew()) {
             user.setId(counter.incrementAndGet());
         }
         return userRepository.put(user.getId(), user);
@@ -41,19 +52,19 @@ public class InMemoryUserRepositoryImpl implements UserRepository {
 
     @Override
     public boolean delete(int id) {
-        LOG.info("inMemory delete " + id);
+        LOG.info("mock delete " + id);
         return userRepository.remove(id) != null;
     }
 
     @Override
     public User get(int id) {
-        LOG.info("inMemory get " + id);
+        LOG.info("mock get " + id);
         return userRepository.get(id);
     }
 
     @Override
     public User getByEmail(String email) {
-        LOG.info("inMemory getByEmail " + email);
+        LOG.info("mock getByEmail " + email);
 //        Objects.requireNonNull(email);
         userRepository.values().stream().filter(u -> email.equals(u.getEmail())).findFirst().orElse(null);
         return null;
@@ -61,7 +72,7 @@ public class InMemoryUserRepositoryImpl implements UserRepository {
 
     @Override
     public List<User> getAll() {
-        LOG.info("inMemory getAll");
+        LOG.info("mock getAll");
         return userRepository.values().stream().sorted(USER_COMPARATOR).collect(Collectors.toList());
     }
 }
