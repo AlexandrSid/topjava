@@ -31,7 +31,7 @@
             <appender-ref ref="console"/>
         </root>
 
-    <root level="debug">
-        <appender-ref ref="STDOUT" />
-    </root>
+    <!--<root level="debug">-->
+        <!--<appender-ref ref="STDOUT" />-->
+    <!--</root>-->
 </configuration>
