@@ -4,6 +4,7 @@ package ru.javawebinar.topjava.model;
  * Created by Александр on 2017-04-12.
  */
 public class BaseEntity {
+    public static final int START_SEQ = 100000;
 
     protected Integer id;
 
@@ -24,5 +25,21 @@ public class BaseEntity {
 
     public boolean isNew() {
         return id == null;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        BaseEntity that = (BaseEntity) o;
+        if (this.id == null || that.id == null) return false;
+
+        return id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id : 0;
     }
 }
