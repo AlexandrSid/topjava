@@ -1,5 +1,6 @@
 package ru.javawebinar.topjava.repository.jdbc;
 
+import org.springframework.stereotype.Repository;
 import ru.javawebinar.topjava.model.UserMeal;
 import ru.javawebinar.topjava.repository.UserMealRepository;
 
@@ -9,7 +10,9 @@ import java.util.Collection;
 /**
  * Created by Александр on 2017-04-26.
  */
+@Repository
 public class JdbcUserMealRepositoryImpl implements UserMealRepository {
+
     @Override
     public UserMeal save(UserMeal userMeal, int userId) {
         return null;
